@@ -3,6 +3,7 @@ const postRoutes = express.Router();
 
 const postModel = require('../models/Post.js')
 
+// Base CRUD API
 postRoutes.route('/create-post').post((req, res, next) => {
     postModel.create(req.body, (error, data) => {
         if (error) return next(error)
@@ -39,4 +40,19 @@ postRoutes.route("/delete-post/:id").delete((req, res, next) => {
         }
     })
 });
+
+//Conveniece routes
+postRoutes.route("/recent-posts").get((req, res, next) => {
+    postModel.find({}, null, {sort: {date_sent:-1}},(error, data) => {
+        if(error) return next(data)
+        else res.json(data)
+    })
+})
+postRoutes.route("/by-id/:id").get((req, res, next) => {
+    console.log("Recieved request at by-id")
+    postModel.findById(req.params.id, (error, data) => {
+        if(error) return next(data);
+        else res.json(data)
+    })
+})
 module.exports = postRoutes;

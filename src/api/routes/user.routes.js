@@ -39,4 +39,13 @@ userRoutes.route("/delete-user/:id").delete((req, res, next) => {
         }
     })
 });
+
+//UTILS
+userRoutes.route("/by-id/:id").get((req, res, next) => {
+    console.log("Recieved request at by-id")
+    userModel.findById(req.params.id, (error, data) => {
+        if(error) return next(data);
+        else res.json(data)
+    })
+})
 module.exports = userRoutes;

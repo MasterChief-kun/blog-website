@@ -11,7 +11,7 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId
     },
     date_sent: {
-        type: String,
+        type: Date,
     }
 },{
     collection: 'posts'
