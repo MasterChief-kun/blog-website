@@ -2,13 +2,14 @@
   "name": "blog-website-vue",
   "version": "0.1.0",
   "private": true,
-  "main":"src/api/api.js",
+  "main": "src/api/api.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
@@ -16,6 +17,7 @@
     "http-errors": "^2.0.0",
     "mongoose": "^6.2.1",
     "vue": "^3.0.0",
+    "vue-meta": "^2.4.0",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {

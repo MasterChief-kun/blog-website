@@ -21,11 +21,11 @@ export default {
         }
     },
     created(){
-        let posturl = "http://localhost:4000/post/by-id/"+ this.$route.params.id
+        let posturl = "/post/by-id/"+ this.$route.params.id
         axios.get(posturl).then(res => {
             this.currPost = res.data;
             console.log(this.currPost)
-            let userurl = "http://localhost:4000/user/by-id/" + this.currPost.sender;
+            let userurl = "/user/by-id/" + this.currPost.sender;
             axios.get(userurl).then(Userres => {
                 this.currPostSender = Userres.data;
             }).catch(error => {

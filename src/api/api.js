@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const express = require('express')
 const data = require('../config/adminuser.config.js')
-const bodyParser = require('body-parser')
 const userApi = require('../api/routes/user.routes')
 const postApi = require('../api/routes/post.routes.js')
 const createError = require('http-errors')
@@ -15,10 +14,8 @@ mongoose.connect(data.dbUrl).then(() => {
 });
 
 const app = express()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-    extended: false,
-}));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(cors())
 app.use('/user',userApi)
 app.use('/post',postApi)
